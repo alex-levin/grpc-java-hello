@@ -1,0 +1,29 @@
+Protobuf Eclipse Plugin:
+https://github.com/google/protobuf-dt
+
+File - New - Project - Maven Project
+Create a Simple Project
+groupId: io.alevin
+artifactId: grpc-java-hello
+name: grpc-java-hello
+
+Generated pom.xml:
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>io.alevin</groupId>
+  <artifactId>grpc-java-hello</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>grpc-java-hello</name>
+</project>
+
+Add dependencies and plugins into pom.xml from https://github.com/grpc/grpc-java.
+
+Right click project - Maven - Update Project
+Generated Java sources under target\generated-sources\protobuf folder.
+Generated HelloServiceGrpc class contains HelloServiceImplBase class which needs to be extended.
+
+Created HelloServiceImpl in src\main\java that extends HelloServiceImplBase.
+Created GrpcServer that runs HelloServiceImpl.
+Created GrpcClient.
+
+Right click project - Run As - maven Build creates grpc-java-hello-0.0.1-SMAPSHOT.jar that contains client stub and server skeleton.
