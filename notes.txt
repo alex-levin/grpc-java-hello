@@ -6,10 +6,17 @@ https://github.com/grpc/grpc-java/tree/master/compiler
 https://mvnrepository.com/artifact/io.grpc/protoc-gen-grpc-java/1.40.1
 https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/1.40.1/
 
-Get protoc: https://github.com/protocolbuffers/protobuf/releases/download/v3.18.0/protoc-3.18.0-win64.zip
-Unzip and add to the system PATH.
+Get protoc: https://repo1.maven.org/maven2/com/google/protobuf/protoc/3.17.3/protoc-3.17.3-windows-x86_64.exe
+Add to the system PATH.
 
 Get protoc-gen-grpc-java: https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/1.40.1/protoc-gen-grpc-java-1.40.1-windows-x86_64.exe
+
+Generate Java stubs:
+https://github.com/grpc/grpc-java/tree/master/compiler:
+Run this command to generate gRPC Java service skeleton and client stubs:
+C:/tools/protoc/bin/protoc-3.17.3-windows-x86_64.exe --plugin=protoc-gen-grpc-java=C:/tools/protoc/bin/protoc-gen-grpc-java-1.40.1-windows-x86_64.exe -I=C:/dev/eclipse-workspace/grpc-java-hello/src/main --java_out=C:/dev/eclipse-workspace/grpc-java-hello/src/main/java --grpc-java_out=C:/dev/eclipse-workspace/grpc-java-hello/src/main/java C:/dev/eclipse-workspace/grpc-java-hello/src/main/proto/HelloService.proto
+
+Generated HelloServiceGrpc.java contains HelloServiceImplBase class which needs to be extended.
 
 Protobuf Eclipse Plugin - optional
 https://github.com/google/protobuf-dt
@@ -33,12 +40,7 @@ Add dependencies and plugins into pom.xml from https://github.com/grpc/grpc-java
 
 Right click project - Maven - Update Project
 
-https://github.com/grpc/grpc-java/tree/master/compiler:
-Run this command to generate gRPC Java service skeleton and client stubs:
-C:/tools/protoc/bin/protoc.exe --plugin=protoc-gen-grpc-java=C:/tools/protoc/bin/protoc-gen-grpc-java-1.40.1-windows-x86_64.exe -I=C:/dev/eclipse-workspace/grpc-java-hello/src/main --java_out=C:/dev/eclipse-workspace/grpc-java-hello/dest --grpc-java_out=C:/dev/eclipse-workspace/grpc-java-hello/dest C:/dev/eclipse-workspace/grpc-java-hello/src/main/proto/HelloService.proto
 
-Copy generated files from grpc-java-hello\dest to grpc-java-hello\src\main\java.
-Generated HelloServiceGrpc.java contains HelloServiceImplBase class which needs to be extended.
 
 Create HelloServiceImpl in src\main\java that extends HelloServiceImplBase.
 Create GrpcServer that runs HelloServiceImpl.
