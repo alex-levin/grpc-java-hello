@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-package io.alevin.grpc;
+package io.alevin.grpc.gen;
 
 message HelloRequest {
 	string firstName = 1;

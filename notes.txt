@@ -1,4 +1,17 @@
-Protobuf Eclipse Plugin:
+Protocol Buffer Compilers:
+https://github.com/protocolbuffers/protobuf
+https://github.com/protocolbuffers/protobuf/releases
+https://grpc.io/docs/languages/java/generated-code/
+https://github.com/grpc/grpc-java/tree/master/compiler
+https://mvnrepository.com/artifact/io.grpc/protoc-gen-grpc-java/1.40.1
+https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/1.40.1/
+
+Get protoc: https://github.com/protocolbuffers/protobuf/releases/download/v3.18.0/protoc-3.18.0-win64.zip
+Unzip and add to the system PATH.
+
+Get protoc-gen-grpc-java: https://repo1.maven.org/maven2/io/grpc/protoc-gen-grpc-java/1.40.1/protoc-gen-grpc-java-1.40.1-windows-x86_64.exe
+
+Protobuf Eclipse Plugin - optional
 https://github.com/google/protobuf-dt
 
 File - New - Project - Maven Project
@@ -19,11 +32,17 @@ Generated pom.xml:
 Add dependencies and plugins into pom.xml from https://github.com/grpc/grpc-java.
 
 Right click project - Maven - Update Project
-Generated Java sources under target\generated-sources\protobuf folder.
-Generated HelloServiceGrpc class contains HelloServiceImplBase class which needs to be extended.
 
-Created HelloServiceImpl in src\main\java that extends HelloServiceImplBase.
-Created GrpcServer that runs HelloServiceImpl.
-Created GrpcClient.
+https://github.com/grpc/grpc-java/tree/master/compiler:
+Run this command to generate gRPC Java service skeleton and client stubs:
+C:/tools/protoc/bin/protoc.exe --plugin=protoc-gen-grpc-java=C:/tools/protoc/bin/protoc-gen-grpc-java-1.40.1-windows-x86_64.exe -I=C:/dev/eclipse-workspace/grpc-java-hello/src/main --java_out=C:/dev/eclipse-workspace/grpc-java-hello/dest --grpc-java_out=C:/dev/eclipse-workspace/grpc-java-hello/dest C:/dev/eclipse-workspace/grpc-java-hello/src/main/proto/HelloService.proto
 
-Right click project - Run As - maven Build creates grpc-java-hello-0.0.1-SMAPSHOT.jar that contains client stub and server skeleton.
+Copy generated files from grpc-java-hello\dest to grpc-java-hello\src\main\java.
+Generated HelloServiceGrpc.java contains HelloServiceImplBase class which needs to be extended.
+
+Create HelloServiceImpl in src\main\java that extends HelloServiceImplBase.
+Create GrpcServer that runs HelloServiceImpl.
+Create GrpcClient.
+
+Right click project - Run As - Maven Build creates grpc-java-hello-0.0.1-SMAPSHOT.jar in the target directory that contains the client stub 
+and the server skeleton.

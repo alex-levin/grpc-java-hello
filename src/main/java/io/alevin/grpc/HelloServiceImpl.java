@@ -1,6 +1,8 @@
 package io.alevin.grpc;
 
-import io.alevin.grpc.HelloServiceGrpc.HelloServiceImplBase;
+import io.alevin.grpc.gen.HelloRequest;
+import io.alevin.grpc.gen.HelloResponse;
+import io.alevin.grpc.gen.HelloServiceGrpc.HelloServiceImplBase;
 import io.grpc.stub.StreamObserver;
 
 public class HelloServiceImpl extends HelloServiceImplBase {

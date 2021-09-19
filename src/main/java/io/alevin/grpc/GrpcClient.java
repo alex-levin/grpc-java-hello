@@ -1,5 +1,8 @@
 package io.alevin.grpc;
 
+import io.alevin.grpc.gen.HelloRequest;
+import io.alevin.grpc.gen.HelloResponse;
+import io.alevin.grpc.gen.HelloServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 
